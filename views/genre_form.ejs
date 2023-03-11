@@ -1,0 +1,16 @@
+<h1> <%= title %></h1>
+
+<form method='POST' action=''>
+    <div class="form-group">
+        <label for='name'> Genre </label>
+        <input type='text' id='name' class='form-control' placeholder='Write a genre' name='name' value='<%= typeof genre == 'undefined' ? ' ' : genre.name %>' required />
+    </div>
+    <button class='btn btn-primary' type='submit'>Submit</button>
+</form>
+
+<% if (typeof errors != 'undefined') { %> 
+    <% for (const error of errors) { %>
+        <p><%= error.msg %></p>
+    <% } %>
+<% } %>
+

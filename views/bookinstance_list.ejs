@@ -1,0 +1,20 @@
+<h1><%= title %> </h1>
+
+<% if (bookinstance_list.length > 0) { %>
+  <ul>
+    <% bookinstance_list.forEach( val => { %>
+      <li> <a href=<%= val.url %>> <%= val.book.title %> : <%= val.imprint %> </a></li>
+      <% if (val.status == 'Available') { %>
+        <span class='text-success'> <%= val.status %></span>
+      <% } else if (val.status == 'Maintenance') { %>
+        <span class='text-danger'> <%= val.status %></span>
+      <% } else { %>
+        <span class='text-warning'> <%= val.status %></span>
+      <% } %> 
+      <% if (val.status != 'Available') { %>
+        <span> <%= val.due_back_formatted %></span>
+    <% }}) %>
+  </ul>
+<% } else { %>
+  <p>There are no books</p>
+<% } %>
